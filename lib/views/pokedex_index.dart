@@ -1,8 +1,12 @@
 
+import 'dart:async';
+
 import 'package:aformacproject/entity/pokedex.dart';
 import 'package:aformacproject/views/pokedex_show.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'library_index.dart';
 
 class PokedexIndex extends StatelessWidget {
 
@@ -17,16 +21,14 @@ class PokedexIndex extends StatelessWidget {
         title: const Text('Liste des Pokedex'),
         actions: [
           PopupMenuButton<int>(
-            onSelected: (popupMenuItemClicked) => handleMenuSelected(popupMenuItemClicked),
+            onSelected: (popupMenuItemClicked) => handleMenuSelected(
+              popupMenuItemClicked, context
+            ),
             itemBuilder: (context) => [
               const PopupMenuItem<int>(
-                child: Text('Indiquer où je vais aller'),
-                value: 0
+                child: Text('Ma bibliothèque de jeu'),
+                value: 0,
               ),
-              const PopupMenuItem(
-                child: Text('An other direction'),
-                value: 1
-              )
             ]
           )
         ],
@@ -69,8 +71,8 @@ class PokedexIndex extends StatelessWidget {
                         )
                     ),
                     child: const Text('Pokedex gen 2')
-                )
-              ] ,
+                ),
+              ],
             ),
           ]
         ),
@@ -78,9 +80,14 @@ class PokedexIndex extends StatelessWidget {
     );
   }
 
-  void handleMenuSelected(int popupMenuItemClicked) {
+  void handleMenuSelected(int popupMenuItemClicked, BuildContext context) {
     if (popupMenuItemClicked == 0) {
-
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Library()
+        )
+      );
     }
     // etc
   }
