@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:aformacproject/entity/pokedex.dart';
+import 'package:aformacproject/views/form/search_pokemon.dart';
 import 'package:aformacproject/views/pokedex_show.dart';
 import 'package:aformacproject/widgets/button_pokemon.dart';
 import 'package:flutter/cupertino.dart';
@@ -73,6 +74,18 @@ class PokedexIndex extends StatelessWidget {
                           builder: (context) => PokedexShow(
                               pokedex: Pokedex('Pokedex gen 2', 152, 251)
                           )
+                      )
+                  ),
+                ),
+                ButtonPokemon(
+                  text: 'Rechercher un Pokémon',
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        // Widget d'affichage d'un Pokedex
+                        // Il prend en paramètre un objet Pokedex
+                        // On lui créé directement à la volée
+                          builder: (context) => const SearchPokemon()
                       )
                   ),
                 ),
