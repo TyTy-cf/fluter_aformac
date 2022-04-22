@@ -4,6 +4,7 @@ import 'package:aformacproject/widgets/button_pokemon.dart';
 import 'package:aformacproject/widgets/color/custom_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchPokemon extends StatefulWidget {
 
@@ -16,13 +17,25 @@ class SearchPokemon extends StatefulWidget {
 
 class _SearchPokemonState extends State<SearchPokemon> {
 
+  // Ecoute les changements du champ text sur lequel il est placé
   TextEditingController pokemonNumberController = TextEditingController();
+  // Vérifier l'état de notre formulaire (valide, non valide, etc)
   final _formKey = GlobalKey<FormState>();
   Pokemon? _pokemon;
 
   @override
   void initState() {
     super.initState();
+    // printReferences();
+  }
+
+  // Exemple de shared_preferences :
+  // On récupère la valeur présente dedans
+  void printReferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey("test")) {
+      print(prefs.getString("test"));
+    }
   }
 
   @override
@@ -46,9 +59,9 @@ class _SearchPokemonState extends State<SearchPokemon> {
                       keyboardType: TextInputType.number,
                       controller: pokemonNumberController,
                       decoration: const InputDecoration(
-                        // Placeholder de votre inpuit
-                          hintText: 'Pokemon number',
-                          border: OutlineInputBorder()
+                        // Placeholder de votre input
+                        hintText: 'Pokemon number',
+                        border: OutlineInputBorder()
                       ),
                       validator: (value) {
                         if (value == null) {
@@ -85,6 +98,8 @@ class _SearchPokemonState extends State<SearchPokemon> {
               ],
             )
           ),
+          // le if ne fonctionne que pour le Widget en dessous, si la condition
+          // est oui
           if (_pokemon != null)
             Flexible(
               flex: 1,
