@@ -8,6 +8,7 @@ import 'package:aformacproject/widgets/button_pokemon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'form/login.dart';
 import 'library_index.dart';
 
 class PokedexIndex extends StatelessWidget {
@@ -30,6 +31,10 @@ class PokedexIndex extends StatelessWidget {
               const PopupMenuItem<int>(
                 child: Text('Ma bibliothèque de jeu'),
                 value: 0,
+              ),
+              const PopupMenuItem<int>(
+                child: Text('Se connecter'),
+                value: 1,
               ),
             ]
           )
@@ -105,8 +110,14 @@ class PokedexIndex extends StatelessWidget {
           builder: (context) => const Library()
         )
       );
+    } else if (popupMenuItemClicked == 1) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => const Login()
+          )
+      );
     }
-    // etc
   }
 
 }
