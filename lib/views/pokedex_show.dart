@@ -1,6 +1,7 @@
 
 import 'package:aformacproject/entity/pokedex.dart';
 import 'package:aformacproject/entity/pokemon.dart';
+import 'package:aformacproject/widgets/button_pokemon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -67,11 +68,7 @@ class _PokedexShowState extends State<PokedexShow> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.green,
-                        padding: const EdgeInsets.all(10.0)
-                    ),
+                ButtonPokemon(
                     // en JS ça donnerai ça :
                     // btn = document.querySelector('buttonPrevious')
                     // btn.addEventListener('click') => onPressed
@@ -80,14 +77,11 @@ class _PokedexShowState extends State<PokedexShow> {
                     // else
                     //   previous()
                     onPressed: index == 0 ? null : () => previous(),
-                    child: const Text('Previous')
+                    text: 'Previous'
                 ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(10.0)
-                    ),
-                    onPressed: index == (pokemons.length - 1) ? null : () => next(),
-                    child: const Text('Next')
+                ButtonPokemon(
+                  onPressed: index == (pokemons.length - 1) ? null : () => next(),
+                  text:'Next'
                 ),
               ],
             ),

@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:aformacproject/entity/pokedex.dart';
 import 'package:aformacproject/views/pokedex_show.dart';
+import 'package:aformacproject/widgets/button_pokemon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -47,30 +48,33 @@ class PokedexIndex extends StatelessWidget {
               children: [
                 // Bouton qui lorsque l'on clique dessus, change la page sur laquelle on se trouve
                 // Et va vers la bonne version du Pokedex
-                ElevatedButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            // Widget d'affichage d'un Pokedex
-                            // Il prend en paramètre un objet Pokedex
-                            // On lui créé directement à la volée
-                            builder: (context) => PokedexShow(
-                                pokedex: Pokedex('Pokedex gen 1', 1, 151)
-                            )
+                ButtonPokemon(
+                  text: 'Pokedex gen 1',
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        // Widget d'affichage d'un Pokedex
+                        // Il prend en paramètre un objet Pokedex
+                        // On lui créé directement à la volée
+                        builder: (context) => PokedexShow(
+                            pokedex: Pokedex('Pokedex gen 1', 1, 151)
                         )
-                    ),
-                    child: const Text('Pokedex gen 1')
+                      )
+                  ),
                 ),
-                ElevatedButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PokedexShow(
-                                pokedex: Pokedex('Pokedex gen 2', 152, 251)
-                            )
-                        )
-                    ),
-                    child: const Text('Pokedex gen 2')
+                ButtonPokemon(
+                  text: 'Pokedex gen 2',
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        // Widget d'affichage d'un Pokedex
+                        // Il prend en paramètre un objet Pokedex
+                        // On lui créé directement à la volée
+                          builder: (context) => PokedexShow(
+                              pokedex: Pokedex('Pokedex gen 2', 152, 251)
+                          )
+                      )
+                  ),
                 ),
               ],
             ),
