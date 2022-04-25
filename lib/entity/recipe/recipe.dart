@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:isar/isar.dart';
 
-part 'recipe.g.dart';
+// part 'recipe.g.dart';
 
 Recipe recipeFromJson(String str) => Recipe.fromJson(json.decode(str));
 String recipeToJson(Recipe data) => json.encode(data.toJson());
@@ -11,8 +11,8 @@ String recipeToJson(Recipe data) => json.encode(data.toJson());
 @Collection()
 class Recipe {
 
-  @Id()
-  int? id = Isar.autoIncrement;
+  // @Id()
+  // int? id = Isar.autoIncrement;
 
   String name;
 
@@ -35,7 +35,6 @@ class Recipe {
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
     "name": name,
     "nbPeople": nbPeople,
     "duration": duration,

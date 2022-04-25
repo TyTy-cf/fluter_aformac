@@ -1,4 +1,5 @@
 import 'package:aformacproject/entity/recipe/recipe_repository.dart';
+import 'package:aformacproject/views/recipe_index.dart';
 import 'package:aformacproject/widgets/color/custom_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:isar/isar.dart';
 
+import '../../entity/hive/hive_repo.dart';
 import '../../entity/recipe/recipe.dart';
 
 class RecipeForm extends StatefulWidget {
@@ -176,9 +178,18 @@ class _RecipeFormState extends State<RecipeForm> {
                                     int.parse(formState.fields['duration']?.value),
                                     int.parse(formState.fields['price']?.value)
                                 );
-                                Isar isar = await RecipeRepository.init();
-                                RecipeRepository.addRecipe(isar, recipe);
-                                isar.close();
+                                // Si vous debuggez sur smartphone : go utiliser Isar
+                                // Isar isar = await RecipeRepository.init();
+                                // RecipeRepository.addRecipe(isar, recipe);
+                                // isar.close();
+                                HiveRepo.saveDataToBox('recipes', recipe.name, recipe.toJson());
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const RecipeIndex()
+                                    )
+                                );
+                                // HiveRepo.getAllMap('recipes').then((value) => print(value));
                               } else {
                                 setState(() {
                                   iconValidation = const Icon(Icons.cancel);
