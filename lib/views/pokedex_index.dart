@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'form/login.dart';
+import 'form/recipe.dart';
 import 'library_index.dart';
 
 class PokedexIndex extends StatelessWidget {
@@ -33,8 +34,12 @@ class PokedexIndex extends StatelessWidget {
                 value: 0,
               ),
               const PopupMenuItem<int>(
-                child: Text('Se connecter'),
+                child: Text('Ajouter recette'),
                 value: 1,
+              ),
+              const PopupMenuItem<int>(
+                child: Text('Se connecter'),
+                value: 2,
               ),
             ]
           )
@@ -112,10 +117,17 @@ class PokedexIndex extends StatelessWidget {
       );
     } else if (popupMenuItemClicked == 1) {
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => const Login()
-          )
+        context,
+        MaterialPageRoute(
+            builder: (context) => const RecipeForm()
+        )
+      );
+    } else if (popupMenuItemClicked == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const Login()
+        )
       );
     }
   }
