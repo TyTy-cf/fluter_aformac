@@ -99,6 +99,10 @@ class PokedexIndex extends StatelessWidget {
                       )
                   ),
                 ),
+                Image.asset(
+                  'assets/images/stormtrooper.jpg',
+                  width: 240
+                )
               ],
             ),
           ]

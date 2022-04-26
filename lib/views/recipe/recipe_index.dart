@@ -85,13 +85,17 @@ class _RecipeIndexState extends State<RecipeIndex> {
                                   const Icon(Icons.euro, color: Colors.green),
                                   for(int i = 0; i < recipe.price; i++)
                                     const Icon(Icons.star, color: Colors.yellow),
-                                  for(int i = 0; i < (3 - recipe.price); i++)
+                                  for(int i = 0; i < (5 - recipe.price); i++)
                                     const Icon(Icons.star_border),
-                                  Container(margin: const EdgeInsets.symmetric(horizontal: 10)),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
                                   const Icon(Icons.stairs_outlined, color: Colors.pink),
                                   for(int i = 0; i < recipe.difficulty; i++)
                                     const Icon(Icons.star, color: Colors.yellow),
-                                  for(int i = 0; i < (4 - recipe.difficulty); i++)
+                                  for(int i = 0; i < (5 - recipe.difficulty); i++)
                                     const Icon(Icons.star_border),
                                 ],
                               )

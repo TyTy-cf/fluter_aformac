@@ -12,7 +12,9 @@ import '../../entity/recipe/recipe.dart';
 
 class RecipeForm extends StatefulWidget {
 
-  const RecipeForm({Key? key}) : super(key: key);
+  final Recipe? recipe;
+
+  const RecipeForm({Key? key, this.recipe}) : super(key: key);
 
   @override
   State createState() => _RecipeFormState();
@@ -31,6 +33,7 @@ class _RecipeFormState extends State<RecipeForm> {
 
   @override
   Widget build(BuildContext context) {
+    Recipe? recipe = widget.recipe;
     return Scaffold(
         appBar: AppBar(
           title: const Text('Nouvelle recette'),
@@ -53,6 +56,7 @@ class _RecipeFormState extends State<RecipeForm> {
                                   FormBuilderTextField(
                                     name: 'name',
                                     maxLines: null,
+                                    initialValue: recipe != null ? recipe.name : '',
                                     decoration: const InputDecoration(
                                       hintText: 'Name',
                                       labelText: 'Name',
@@ -67,6 +71,7 @@ class _RecipeFormState extends State<RecipeForm> {
                                   FormBuilderTextField(
                                     name: 'nbPeople',
                                     maxLines: null,
+                                    initialValue: recipe != null ? recipe.nbPeople.toString() : '',
                                     keyboardType: TextInputType.number,
                                     // masque le contenu de l'input
                                     decoration: const InputDecoration(
@@ -87,11 +92,12 @@ class _RecipeFormState extends State<RecipeForm> {
                                   FormBuilderTextField(
                                     name: 'duration',
                                     maxLines: null,
+                                    initialValue: recipe != null ? recipe.duration.toString() : '',
                                     keyboardType: TextInputType.number,
                                     decoration: const InputDecoration(
                                         hintText: 'Temps de préparation',
                                         labelText: 'Temps de préparation',
-                                        icon: Icon(Icons.timelapse)
+                                        icon: Icon(Icons.timelapse),
                                     ),
                                     validator: FormBuilderValidators.compose([
                                       FormBuilderValidators.required(
@@ -106,6 +112,7 @@ class _RecipeFormState extends State<RecipeForm> {
                                   FormBuilderTextField(
                                     name: 'difficulty',
                                     maxLines: null,
+                                    initialValue: recipe != null ? recipe.difficulty.toString() : '',
                                     keyboardType: TextInputType.number,
                                     decoration: const InputDecoration(
                                       hintText: 'Difficulté',
@@ -121,14 +128,15 @@ class _RecipeFormState extends State<RecipeForm> {
                                         errorText: "La difficulté minimum est 1"
                                       ),
                                       FormBuilderValidators.maxLength(
-                                        4,
-                                        errorText: "La difficulté maximum est 4"
+                                        5,
+                                        errorText: "La difficulté maximum est 5"
                                       ),
                                     ]),
                                   ),
                                   FormBuilderTextField(
                                     name: 'price',
                                     maxLines: null,
+                                    initialValue: recipe != null ? recipe.price.toString() : '',
                                     keyboardType: TextInputType.number,
                                     decoration: const InputDecoration(
                                         hintText: 'Prix',

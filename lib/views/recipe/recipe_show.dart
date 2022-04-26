@@ -1,4 +1,5 @@
 
+import 'package:aformacproject/views/form/recipe.dart';
 import 'package:aformacproject/widgets/color/custom_color.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +77,7 @@ class _RecipeShowState extends State<RecipeShow> {
                       const Icon(Icons.euro, color: Colors.green),
                       for(int i = 0; i < recipe.price; i++)
                         const Icon(Icons.star, color: Colors.yellow),
-                      for(int i = 0; i < (3 - recipe.price); i++)
+                      for(int i = 0; i < (5 - recipe.price); i++)
                         const Icon(Icons.star_border),
                     ],
                   )
@@ -89,34 +90,41 @@ class _RecipeShowState extends State<RecipeShow> {
                       const Icon(Icons.stairs_outlined, color: Colors.pink),
                       for(int i = 0; i < recipe.difficulty; i++)
                         const Icon(Icons.star, color: Colors.yellow),
-                      for(int i = 0; i < (4 - recipe.difficulty); i++)
+                      for(int i = 0; i < (5 - recipe.difficulty); i++)
                         const Icon(Icons.star_border),
                     ],
                   )
                 ),
                 Container(
-                    margin: EdgeInsets.only(top: _marginTop, left: _marginLeft),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () => 'oui',
-                          child: const Icon(Icons.edit),
-                          style: ElevatedButton.styleFrom(
-                            // onSurface : change la couleur du bouton si disable
-                              onSurface: CustomColor.bluePokemon4,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24.0),
-                              ),
-                              primary: CustomColor.bluePokemon,
-                              padding: const EdgeInsets.symmetric(
-                                vertical:  10.0,
-                                horizontal: 16.0
-                              )
+                  margin: EdgeInsets.only(top: _marginTop, left: _marginLeft),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RecipeForm(
+                              recipe: recipe
+                            )
+                          )
+                        ),
+                        child: const Icon(Icons.edit),
+                        style: ElevatedButton.styleFrom(
+                          // onSurface : change la couleur du bouton si disable
+                          onSurface: CustomColor.bluePokemon4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                          primary: CustomColor.bluePokemon,
+                          padding: const EdgeInsets.symmetric(
+                            vertical:  10.0,
+                            horizontal: 16.0
                           )
                         )
-                      ],
-                    )
+                      )
+                    ],
+                  )
                 ),
               ],
             );
