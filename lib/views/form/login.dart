@@ -25,6 +25,7 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormBuilderState>();
   Icon iconValidation = const Icon(Icons.check);
   Color primary = CustomColor.bluePokemon;
+  bool hidePassword = true;
 
   @override
   void initState() {
@@ -72,12 +73,18 @@ class _LoginState extends State<Login> {
                               FormBuilderTextField(
                                 name: 'password',
                                 // masque le contenu de l'input
-                                obscureText: true,
-                                decoration: const InputDecoration(
+                                obscureText: hidePassword,
+                                decoration: InputDecoration(
                                   // Placeholder de votre input
                                   hintText: 'Password',
                                   labelText: 'Password',
-                                  icon: Icon(Icons.password)
+                                  icon: const Icon(Icons.password),
+                                  suffixIcon: IconButton(
+                                    onPressed: () => setState(() {
+                                      hidePassword = !hidePassword;
+                                    }),
+                                    icon: hidePassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off)
+                                  )
                                 ),
                                 validator: FormBuilderValidators.compose([
                                   FormBuilderValidators.required(
