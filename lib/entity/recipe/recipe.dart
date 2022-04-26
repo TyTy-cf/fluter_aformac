@@ -26,7 +26,7 @@ class Recipe {
 
   Recipe(this.name, this.nbPeople, this.duration, this.difficulty, this.price);
 
-  factory Recipe.fromJson(Map<String, dynamic> json) => Recipe(
+  factory Recipe.fromJson(Map<dynamic, dynamic> json) => Recipe(
     json["name"],
     json["nbPeople"],
     json["duration"],
@@ -34,7 +34,7 @@ class Recipe {
     json["price"]
   );
 
-  Map<String, dynamic> toJson() => {
+  Map<dynamic, dynamic> toJson() => {
     "name": name,
     "nbPeople": nbPeople,
     "duration": duration,

@@ -174,8 +174,8 @@ class _RecipeFormState extends State<RecipeForm> {
                                 Recipe recipe = Recipe(
                                     formState.fields['name']?.value,
                                     int.parse(formState.fields['nbPeople']?.value),
-                                    int.parse(formState.fields['difficulty']?.value),
                                     int.parse(formState.fields['duration']?.value),
+                                    int.parse(formState.fields['difficulty']?.value),
                                     int.parse(formState.fields['price']?.value)
                                 );
                                 // Si vous debuggez sur smartphone : go utiliser Isar
