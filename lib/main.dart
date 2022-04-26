@@ -1,4 +1,4 @@
-import 'package:aformacproject/views/pokedex_index.dart';
+import 'package:aformacproject/views/pokedex/pokedex_index.dart';
 import 'package:aformacproject/widgets/color/custom_color.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

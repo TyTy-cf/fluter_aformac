@@ -21,27 +21,23 @@ class HiveRepo {
   }
 
   // select * from boxName where "id" = key
-  static Future<Map<String, dynamic>> getDataFromBox(String boxName, String key) async {
-    Box box = await _openHiveBox(boxName);
-    return box.get(key);
+  static Future<dynamic> getDataFromBox(String boxName, String key) async {
+    return (await _openHiveBox(boxName)).get(key);
   }
 
   // truncate table
   static void clearBox(String boxName) async {
-    Box box = await _openHiveBox(boxName);
-    box.clear();
+    (await _openHiveBox(boxName)).clear();
   }
 
   // delete from boxName where "id" = key
   static void removeEntity(String boxName, String key) async {
-    Box box = await _openHiveBox(boxName);
-    box.delete(key);
+    (await _openHiveBox(boxName)).delete(key);
   }
 
   // select * from boxName
   static Future<Map> getAllMap(String boxName) async {
-    Box box = await _openHiveBox(boxName);
-    return box.toMap();
+    return (await _openHiveBox(boxName)).toMap();
   }
 
   // select * from boxName

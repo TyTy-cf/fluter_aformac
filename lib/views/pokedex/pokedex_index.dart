@@ -3,14 +3,14 @@ import 'dart:async';
 
 import 'package:aformacproject/entity/pokedex.dart';
 import 'package:aformacproject/views/form/search_pokemon.dart';
-import 'package:aformacproject/views/pokedex_show.dart';
+import 'package:aformacproject/views/recipe/recipe_index.dart';
 import 'package:aformacproject/widgets/button_pokemon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'form/login.dart';
-import 'form/recipe.dart';
-import 'library_index.dart';
+import '../form/login.dart';
+import '../library_index.dart';
+import 'pokedex_show.dart';
 
 class PokedexIndex extends StatelessWidget {
 
@@ -34,7 +34,7 @@ class PokedexIndex extends StatelessWidget {
                 value: 0,
               ),
               const PopupMenuItem<int>(
-                child: Text('Ajouter recette'),
+                child: Text('Voir les recettes'),
                 value: 1,
               ),
               const PopupMenuItem<int>(
@@ -119,7 +119,7 @@ class PokedexIndex extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => const RecipeForm()
+            builder: (context) => const RecipeIndex()
         )
       );
     } else if (popupMenuItemClicked == 2) {

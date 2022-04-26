@@ -1,9 +1,12 @@
 
 import 'package:aformacproject/entity/hive/hive_repo.dart';
+import 'package:aformacproject/views/form/recipe.dart';
+import 'package:aformacproject/views/recipe/recipe_show.dart';
 import 'package:aformacproject/widgets/color/custom_color.dart';
 import 'package:flutter/material.dart';
 
-import '../entity/recipe/recipe.dart';
+import '../../entity/recipe/recipe.dart';
+import '../../widgets/text_circular_progress.dart';
 
 class RecipeIndex extends StatefulWidget {
 
@@ -42,7 +45,6 @@ class _RecipeIndexState extends State<RecipeIndex> {
               scrollDirection: Axis.vertical,
               itemBuilder: (BuildContext context, int index) {
                 Recipe recipe = Recipe.fromJson(recipes[index]);
-                print(recipe.toJson());
                 return Card(
                   elevation: 3,
                   borderOnForeground: false,
@@ -55,6 +57,17 @@ class _RecipeIndexState extends State<RecipeIndex> {
                         ListTile(
                           onTap: () {
                             // action à effectuer au "tap" sur une card
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                // Widget d'affichage d'un Pokedex
+                                // Il prend en paramètre un objet Pokedex
+                                // On lui créé directement à la volée
+                                  builder: (context) => RecipeShow(
+                                    recipeName: recipe.name,
+                                  )
+                              )
+                            );
                           },
                           title: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -85,12 +98,15 @@ class _RecipeIndexState extends State<RecipeIndex> {
                             ],
                           ),
                           // trailing : code qui viendra s'ajouter sur la partie de droite de ListTile
-                          // trailing: IconButton(
-                          //   icon: const Icon(Icons.arrow),
-                          //   onPressed: () {
-                          //     // autre code de redirection eventuelle ?
-                          //   },
-                          // ),
+                          trailing: IconButton(
+                            icon: const Icon(
+                                Icons.delete_forever,
+                                color: Colors.red,
+                            ),
+                            onPressed: () => setState(() {
+                              HiveRepo.removeEntity('recipes', recipe.name);
+                            }),
+                          ),
                         )
                       ]
                     ),
@@ -100,17 +116,19 @@ class _RecipeIndexState extends State<RecipeIndex> {
             );
           }
           // logique d'affiche en attente des données
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  CircularProgressIndicator(),
-                  Text('We are getting all you recipes, please wait...')
-                ],
-              )
-            ],
+          return const TextCircularProgress(
+            text: 'We are getting all you recipes, please wait...',
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const RecipeForm(),
+            ),
           );
         },
       )

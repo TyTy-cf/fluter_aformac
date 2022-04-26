@@ -1,5 +1,5 @@
 import 'package:aformacproject/entity/recipe/recipe_repository.dart';
-import 'package:aformacproject/views/recipe_index.dart';
+import 'package:aformacproject/views/recipe/recipe_index.dart';
 import 'package:aformacproject/widgets/color/custom_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +52,7 @@ class _RecipeFormState extends State<RecipeForm> {
                                 children: [
                                   FormBuilderTextField(
                                     name: 'name',
+                                    maxLines: null,
                                     decoration: const InputDecoration(
                                       hintText: 'Name',
                                       labelText: 'Name',
@@ -65,6 +66,7 @@ class _RecipeFormState extends State<RecipeForm> {
                                   ),
                                   FormBuilderTextField(
                                     name: 'nbPeople',
+                                    maxLines: null,
                                     keyboardType: TextInputType.number,
                                     // masque le contenu de l'input
                                     decoration: const InputDecoration(
@@ -84,6 +86,7 @@ class _RecipeFormState extends State<RecipeForm> {
                                   ),
                                   FormBuilderTextField(
                                     name: 'duration',
+                                    maxLines: null,
                                     keyboardType: TextInputType.number,
                                     decoration: const InputDecoration(
                                         hintText: 'Temps de préparation',
@@ -102,6 +105,7 @@ class _RecipeFormState extends State<RecipeForm> {
                                   ),
                                   FormBuilderTextField(
                                     name: 'difficulty',
+                                    maxLines: null,
                                     keyboardType: TextInputType.number,
                                     decoration: const InputDecoration(
                                       hintText: 'Difficulté',
@@ -124,6 +128,7 @@ class _RecipeFormState extends State<RecipeForm> {
                                   ),
                                   FormBuilderTextField(
                                     name: 'price',
+                                    maxLines: null,
                                     keyboardType: TextInputType.number,
                                     decoration: const InputDecoration(
                                         hintText: 'Prix',
