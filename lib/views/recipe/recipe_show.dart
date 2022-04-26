@@ -93,7 +93,31 @@ class _RecipeShowState extends State<RecipeShow> {
                         const Icon(Icons.star_border),
                     ],
                   )
-                )
+                ),
+                Container(
+                    margin: EdgeInsets.only(top: _marginTop, left: _marginLeft),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () => 'oui',
+                          child: const Icon(Icons.edit),
+                          style: ElevatedButton.styleFrom(
+                            // onSurface : change la couleur du bouton si disable
+                              onSurface: CustomColor.bluePokemon4,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                              primary: CustomColor.bluePokemon,
+                              padding: const EdgeInsets.symmetric(
+                                vertical:  10.0,
+                                horizontal: 16.0
+                              )
+                          )
+                        )
+                      ],
+                    )
+                ),
               ],
             );
           }
