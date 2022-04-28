@@ -1,3 +1,4 @@
+import 'package:aformacproject/views/homepage.dart';
 import 'package:aformacproject/views/pokedex/pokedex_index.dart';
 import 'package:aformacproject/widgets/color/custom_color.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
             CustomColor.bluePokemon
         ),
       ),
-      home: const PokedexIndex(),
+      home: const HomePage(),
     );
   }
 
