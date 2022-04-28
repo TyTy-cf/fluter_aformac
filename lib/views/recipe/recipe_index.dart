@@ -6,6 +6,7 @@ import 'package:aformacproject/widgets/color/custom_color.dart';
 import 'package:flutter/material.dart';
 
 import '../../entity/recipe/recipe.dart';
+import '../../widgets/popupmenu.dart';
 import '../../widgets/text_circular_progress.dart';
 
 class RecipeIndex extends StatefulWidget {
@@ -29,6 +30,9 @@ class _RecipeIndexState extends State<RecipeIndex> {
       // Définit le titre de la page où je me situe
       appBar: AppBar(
         title: const Text('Mes recettes'),
+        actions: const [
+          PopupMenu()
+        ]
       ),
       // Container afin d'englober le contenu de ma page
       body: FutureBuilder(
