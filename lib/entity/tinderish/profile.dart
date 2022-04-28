@@ -24,7 +24,7 @@ class Profile {
     required this.mediumImage
   });
 
-  factory Profile.fromJson(Map<dynamic, dynamic> json) {
+  factory Profile.fromJsonApi(Map<dynamic, dynamic> json) {
     var jsonData = json["results"][0];
     return Profile(
       gender: jsonData["gender"] == 'female' ? Icons.female : Icons.male,
@@ -33,6 +33,17 @@ class Profile {
       age: jsonData["dob"]["age"],
       largeImage: jsonData["picture"]["large"],
       mediumImage: jsonData["picture"]["medium"],
+    );
+  }
+
+  factory Profile.fromJson(Map<dynamic, dynamic> json) {
+    return Profile(
+      gender: json["gender"] == 'female' ? Icons.female : Icons.male,
+      firstName: json["firstName"],
+      city: json["city"],
+      age: json["age"],
+      largeImage: json["largeImage"],
+      mediumImage: json["mediumImage"],
     );
   }
 
