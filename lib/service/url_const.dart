@@ -7,5 +7,6 @@ class UrlConst {
   // Les urls de l'api
   static const String urlRawDigimons = "digimon-api.vercel.app";
   static const String urlGetDigimons = "/api/digimon";
+  static const String urlGetDigimonsLevel = "/api/digimon/level/";
 
 }
