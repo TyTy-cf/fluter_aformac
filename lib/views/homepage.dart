@@ -1,5 +1,6 @@
 
 
+import 'package:aformacproject/views/digimons/digimons_index.dart';
 import 'package:aformacproject/views/pokedex/pokedex_index.dart';
 import 'package:aformacproject/views/tinderish/swipes.dart';
 import 'package:aformacproject/widgets/button_pokemon.dart';
@@ -53,6 +54,18 @@ class HomePage extends StatelessWidget {
                             // Il prend en paramètre un objet Pokedex
                             // On lui créé directement à la volée
                               builder: (context) => const Swipes()
+                          )
+                      ),
+                    ),
+                    ButtonPokemon(
+                      text: 'Digimons',
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            // Widget d'affichage d'un Pokedex
+                            // Il prend en paramètre un objet Pokedex
+                            // On lui créé directement à la volée
+                              builder: (context) => const DigimonIndex()
                           )
                       ),
                     ),
